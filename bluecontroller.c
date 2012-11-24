@@ -22,7 +22,6 @@ void bt_setut()
 {
   // [...]
   bt_reset();
-  _delay_ms(6000); //wait until the bt module is up and running
   //set_btbaudrate(19200); // must match the bootloader setting
 
   // these setting make the connection as transparent as possible
@@ -94,5 +93,6 @@ void bt_reset(void)
   _delay_ms(50);
   BTM222_RESETPORT |= _BV(BTM222_RESET);
   BTM222_RESETDDR &= ~_BV(BTM222_RESET);
+  _delay_ms(6000); //wait until the bt module is up and running
 }
 
