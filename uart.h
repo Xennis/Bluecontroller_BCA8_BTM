@@ -12,9 +12,8 @@
 
 	/* ATmega328P specific */
 	//#ifdef _AVR_IOM328P_H_
-
-	#define F_CPU 8000000UL		 // Clock Speed (ATmega328P)
-	#define BAUD 19200UL		 // Baud rate (Bluecontroller)
+	#define F_CPU		8000000UL	// Clock Speed (ATmega328P)
+	#define BAUD		19200UL		// Baud rate (Bluecontroller)
 	#define UBRR_VAL	((F_CPU+BAUD*8)/(BAUD*16)-1)
 
 	/* Register names USART0 */
@@ -36,7 +35,7 @@
 	//#endif
 
 	/* method */
-	void uart_putc(unsigned char data);
 	void uart_init(void);
+	void uart_putc(unsigned char data);
 
 #endif /* UART_H_ */

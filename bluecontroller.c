@@ -20,25 +20,25 @@ void bt_init(void)
  */
 void bt_setut()
 {
-  // [...]
-  bt_reset();
-  //set_btbaudrate(19200); // must match the bootloader setting
+	// [...]
+	bt_reset();
+	//set_btbaudrate(19200); // must match the bootloader setting
 
-  // these setting make the connection as transparent as possible
-  bt_send_cmd("\rAT"); // make sure the module is not in sleep mode
-  bt_send_cmd("ATE0"); // disable echo
-  bt_send_cmd("ATQ1"); // disable result code
-  bt_send_cmd("ATC1"); // enable flow control: without this, avrdude under Windows will hang
-  bt_send_cmd("ATR1"); // device is slave  
-  bt_send_cmd("ATN=BlueController"); // set new name
-  bt_send_cmd("ATP=1234"); // set PIN
-  bt_send_cmd("ATD0"); // accept connections from any bt device
-  bt_send_cmd("ATX0"); // disable escape character (default)
-  //bt_send_cmd("ATS1"); // enable powerdown of rs-232 driver (default)
-  bt_send_cmd("ATO"); // reconnect to peer
+	// these setting make the connection as transparent as possible
+	bt_send_cmd("\rAT"); // make sure the module is not in sleep mode
+	bt_send_cmd("ATE0"); // disable echo
+	bt_send_cmd("ATQ1"); // disable result code
+	bt_send_cmd("ATC1"); // enable flow control: without this, avrdude under Windows will hang
+	bt_send_cmd("ATR1"); // device is slave  
+	bt_send_cmd("ATN=BlueController"); // set new name
+	bt_send_cmd("ATP=1234"); // set PIN
+	bt_send_cmd("ATD0"); // accept connections from any bt device
+	bt_send_cmd("ATX0"); // disable escape character (default)
+	//bt_send_cmd("ATS1"); // enable powerdown of rs-232 driver (default)
+	bt_send_cmd("ATO"); // reconnect to peer
 
-  _delay_ms(1000); // allow module to save setting in flash
-  bt_reset(); // activate new settings
+	_delay_ms(1000); // allow module to save setting in flash
+	bt_reset(); // activate new settings
 }
 
 /*
@@ -46,9 +46,9 @@ void bt_setut()
  */
 void bt_escape_sequence(void)
 {
-  _delay_ms(1200);
-  bt_puts("+++");
-  _delay_ms(1200);  
+	_delay_ms(1200);
+	bt_puts("+++");
+	_delay_ms(1200);  
 }
 
 /*
@@ -56,9 +56,9 @@ void bt_escape_sequence(void)
  */
 void bt_send_cmd(char* s)
 {
-  bt_puts(s);
-  /* Carriage return at end (ASCII 13) */
-  bt_putc('\r');
+	bt_puts(s);
+	/* Carriage return at end (ASCII 13) */
+	bt_putc('\r');
 }
 
 /*
@@ -66,11 +66,11 @@ void bt_send_cmd(char* s)
  */
 void bt_puts(char* s)
 {
-  /* while *s != '\0' so unequally "string-end characters" (terminator) */
-  while(*s)
-  {
-    bt_putc(*(s++));
-  }
+	/* while *s != '\0' so unequally "string-end characters" (terminator) */
+	while(*s)
+	{
+ 	bt_putc(*(s++));
+	}
 }
 
 /*

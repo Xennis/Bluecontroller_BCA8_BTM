@@ -12,8 +12,8 @@
 	#include <util/delay.h>
 
 	/* define */
-	#define BTM222_RESET		PB7 // pin for the LED (ersetzt static_cast<byte>(7))
-	#define BTM222_RESETPORT	PORTB // port for the LED
+	#define BTM222_RESET		PB7		// pin for the LED (ersetzt static_cast<byte>(7))
+	#define BTM222_RESETPORT	PORTB	// port for the LED
 	#define BTM222_RESETPIN		PINB
 	#define BTM222_RESETDDR		DDRB
 
