@@ -1,6 +1,4 @@
-#include <avr/io.h>
-#include <util/delay.h>
-#include "uart.h"
+#include "bluecontroller.h"
 
 int main(void)
 {
@@ -10,6 +8,6 @@ int main(void)
 
     while(1)
     {
-		bt_send_cmd("AT");
+		bt_send_cmd("Hallo");
     }
 }

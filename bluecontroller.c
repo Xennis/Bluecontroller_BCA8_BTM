@@ -5,7 +5,6 @@
  * Source: http://code.google.com/r/michaeldreher42-bluecontroller/source/browse/bluecontroller/examples/Setup_BlueController/Setup_BlueController.pde
  */ 
 #include "bluecontroller.h"
-#include "uart.h"
 
 /*
  * Initialization
@@ -85,29 +84,15 @@ void bt_putc(char c)
   _delay_ms(50); 
 }
 
-
-
-
-
-
-
-
-
-//#define BTM222RESET static_cast<byte>(7)  // select the pin for the LED
-#define BTM222RESET 111 // ??? ersetzt dieses static_cast<byte>(7)
-#define BTM222RESETPORT PORTB // select the port for the LED
-#define BTM222RESETPIN PINB
-#define BTM222RESETDDR DDRB
-
 // reset the bluetooth module
 // this terminates the current bluetooth connection so it is not necessary to
 // terminate it manually from the Android phone
 void bt_reset(void)
 {
-  BTM222RESETDDR |= _BV(BTM222RESET);
-  BTM222RESETPORT &= ~_BV(BTM222RESET);
+  BTM222_RESETDDR |= _BV(BTM222_RESET);
+  BTM222_RESETPORT &= ~_BV(BTM222_RESET);
   _delay_ms(50);
-  BTM222RESETPORT |= _BV(BTM222RESET);
-  BTM222RESETDDR &= ~_BV(BTM222RESET);
+  BTM222_RESETPORT |= _BV(BTM222_RESET);
+  BTM222_RESETDDR &= ~_BV(BTM222_RESET);
 }
 

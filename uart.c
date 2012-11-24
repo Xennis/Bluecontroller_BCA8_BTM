@@ -2,7 +2,7 @@
  * uart.c
  *
  * Created: 30.10.2012 10:27:18
- * Author: Fabian & Florian
+ * Author: Fabi & Florian
  */ 
 #include "uart.h"
 
