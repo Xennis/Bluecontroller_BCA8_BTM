@@ -18,7 +18,7 @@ void bt_init(void)
 /*
  * Setup bluecontroller
  */
-void bt_setut()
+void bt_setut(void)
 {
 	// [...]
 	bt_reset();
@@ -42,6 +42,22 @@ void bt_setut()
 }
 
 /*
+ * Reset the bluetooth module
+ *
+ * This terminates the current bluetooth connection.
+ */
+void bt_reset(void)
+{
+	BTM222_RESETDDR |= _BV(BTM222_RESET);
+	BTM222_RESETPORT &= ~_BV(BTM222_RESET);
+	_delay_ms(50);
+	BTM222_RESETPORT |= _BV(BTM222_RESET);
+	BTM222_RESETDDR &= ~_BV(BTM222_RESET);
+	/* Wait until the bt module is up and running */
+	_delay_ms(6000);
+}
+
+/*
  * Send escape sequence (+++).
  */
 void bt_escape_sequence(void)
@@ -49,6 +65,28 @@ void bt_escape_sequence(void)
 	_delay_ms(1200);
 	bt_puts("+++");
 	_delay_ms(1200);  
+}
+
+/*
+ * Send a bluetooth command character.
+ */
+void bt_putc(char c)
+{
+	uart_putc(c);
+	/* Slow down communcation for BTM-22 */
+	_delay_ms(50); 
+}
+
+/*
+ * Send a bluetooth command string (char*).
+ */
+void bt_puts(char* s)
+{
+	/* While *s != '\0' so unequally "string-end characters" (terminator) */
+	while(*s)
+	{
+ 		bt_putc(*(s++));
+	}
 }
 
 /*
@@ -60,39 +98,3 @@ void bt_send_cmd(char* s)
 	/* Carriage return at end (ASCII 13) */
 	bt_putc('\r');
 }
-
-/*
- * Send a bluetooth command string (char*).
- */
-void bt_puts(char* s)
-{
-	/* while *s != '\0' so unequally "string-end characters" (terminator) */
-	while(*s)
-	{
- 	bt_putc(*(s++));
-	}
-}
-
-/*
- * Send a bluetooth command character.
- */
-void bt_putc(char c)
-{
-  uart_putc(c);
-  /* Slow down communcation for BTM-22 */
-  _delay_ms(50); 
-}
-
-// reset the bluetooth module
-// this terminates the current bluetooth connection so it is not necessary to
-// terminate it manually from the Android phone
-void bt_reset(void)
-{
-  BTM222_RESETDDR |= _BV(BTM222_RESET);
-  BTM222_RESETPORT &= ~_BV(BTM222_RESET);
-  _delay_ms(50);
-  BTM222_RESETPORT |= _BV(BTM222_RESET);
-  BTM222_RESETDDR &= ~_BV(BTM222_RESET);
-  _delay_ms(6000); //wait until the bt module is up and running
-}
-

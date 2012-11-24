@@ -22,8 +22,8 @@
 	void bt_setut(void);
 	void bt_reset(void);
 	void bt_escape_sequence(void);
-	void bt_puts(char* s);
 	void bt_putc(char c);
+	void bt_puts(char* s);
 	void bt_send_cmd(char* s);
 
 #endif /* BLUECONTROLLER_H_ */
