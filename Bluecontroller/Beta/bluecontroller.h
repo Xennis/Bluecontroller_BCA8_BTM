@@ -31,5 +31,8 @@
 	void bt_putc(char c);
 	void bt_puts(char* s);
 	void bt_send_cmd(char* s);
+	void bt_check_turn_off(void);
+	void bt_turn_off(void);
+	void bt_turn_on(void);
 
 #endif /* BLUECONTROLLER_H_ */

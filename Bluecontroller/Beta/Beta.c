@@ -28,7 +28,7 @@ int main(void)
 	while ( !( UCSRA & (1<<UDRE)) ) // TODO: Missing semicolon?
 	UDR = MCUSR;
 
-	//bt_check_turn_off
+	//bt_check_turn_off()
 
 	while(1) {
 		bt_puts("Was\n");
@@ -68,7 +68,7 @@ int main(void)
 /*
  * Dieser Interrupt wird ausgelöst sobald neue Daten im USART-Empfangspuffer liegen
  */
-ISR(USART_RX_vect)
+ISR( USART_RX_vect )
 {
 	unsigned char buffer;
 
@@ -85,7 +85,7 @@ ISR(USART_RX_vect)
 	/* Wait for empty transmit buffer */
 	while ( !( UCSRA & (1<<UDRE)) );
 	/* ... and immediately send back */
-	UDR = buffer;//
+	UDR = buffer;
 }
 
 
@@ -94,39 +94,35 @@ ISR(USART_RX_vect)
 /*
  * TODO: needed?
  */
-void md_wait(void)
+void md_wait( void )
 {
-	uint8_t      i;
+	uint8_t i;
 
-	for (i = 60; i> 1; i--)
-	{
-		
+	for (i = 60; i> 1; i--) {
 		_delay_ms(1000);
+		/* INT0 as PD2 */
 		if ( !(PIND & (1<<PIND2)) ) {
-			if (i<600){
-			i=i+10; }
+			if (i<600) {
+				i=i+10;
+			}
 			led();
-			
 		}
-		
 	}
 	
 }
 
-
 /*
  * TODO: needed?
+ * TODO: change return type to void?
  */
 int led( void )
-{
-	#define DELAY_MS2  20
-	
-	/* enable pin as output by setting the data direction register */
-	DDRB |= (1<<DDB6);
+{	
+	/* Enable pin as output by setting the data direction register */
+	DDRB |= (1<<DDB6); // LED as PB6
 	PORTB |= (1<<PORTB6);
-	_delay_ms(DELAY_MS2);
+	_delay_ms(20);
 	PORTB &= ~(1<<PORTB6);
-	_delay_ms(DELAY_MS2);
+	_delay_ms(20);
 	/*for(i=0; i<10; i++) {
 		// led on, pin=0
 		PORTB &= ~(1<<PORTB6);

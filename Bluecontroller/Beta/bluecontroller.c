@@ -25,10 +25,10 @@
  */
 void bt_init(void)
 {
-	/* Configure port D */
+	/* Configure port D (TODO: INT0 as PD2 as input?) */
 	DDRD &= ~(1<<DDD2);
 	PORTD |= (1<<PORTD2);
-	/* Configure port B */
+	/* Configure port B (TODO: BT-Reset as PB7 as output?) */
 	DDRB |= (1<<DDB7);
 	PORTB |= (1<<PORTB7);
 	
@@ -41,6 +41,8 @@ void bt_init(void)
 
 /*
  * Setup Bluecontroller
+ *
+ * TODO: Method does not work!
  */
 void bt_setut(void)
 {
@@ -74,6 +76,8 @@ void bt_setut(void)
  */
 void bt_reset(void)
 {
+	// TODO: Replace by bt_turn_off() / bt_turn_on() ?
+	
 	BTM222_RESET_DDR |= _BV(BTM222_RESET);
 //	DDRB |= 0x10000000; /* PB7 als Ausgang */
 	BTM222_RESET_PORT &= ~_BV(BTM222_RESET);
@@ -135,8 +139,8 @@ void bt_send_cmd(char* s)
  *
  * @return 1 wenn aktiv, 0 wenn nicht aktiv
  */
-uint8_t bt_check_turn_off( void ) {
-	
+uint8_t bt_check_turn_off( void )
+{
 	uint8_t      i;
 	uint8_t	bt=0;
 	DDRB|= (1<<DDB7);
@@ -158,9 +162,22 @@ uint8_t bt_check_turn_off( void ) {
 }
 
 /*
- *
+ * TODO: test method
  */
-void bt_turn_of( void ) {
+void bt_turn_off( void )
+{
+	// TODO: set ddr?
+
 	// if(bt==0) { ...
 	PORTB &= ~(1<<PORTB7);
+	_delay_ms(50);
+}
+
+/*
+ * TODO: test method
+ */
+void bt_turn_on( void )
+{
+	PORTB &= (1<<PORTB7);
+	// TODO: set ddr?
 }
