@@ -12,6 +12,8 @@ Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
 
 Documentation: http://wiki.xennis.de/artikel/Bluecontroller
 
+Acknowledgement: Thanks to the support of Patrick W., Michael Dreher and Kamil Loska
+
 ## Hardware
 
 * BCA8-BTM (Bluecontroller)
