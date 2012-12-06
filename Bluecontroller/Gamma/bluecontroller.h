@@ -23,7 +23,7 @@
 	#define BC_RESET_PIN	PINB
 	#define BC_RESET_DDR	DDRB
 
-	/* method */
+	/* Method */
 	void bt_init(void);
 	void bt_setut(void);
 	void bt_reset(void);
@@ -33,6 +33,6 @@
 	void bt_putc(char c);
 	void bt_puts(char* s);
 	void bt_send_cmd(char* s);
-	uint8_t bt_check_turn_off(void);
+	//uint8_t bt_check_turn_off(void);
 
 #endif /* BLUECONTROLLER_H_ */

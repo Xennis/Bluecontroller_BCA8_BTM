@@ -11,7 +11,7 @@
 #include "uart.h"
 
 /* 
- * USART Initialization (Datasheet page 178)
+ * USART Initialization (datasheet page 178)
  */
 void uart_init( unsigned int ubrr )
 {
@@ -28,7 +28,7 @@ void uart_init( unsigned int ubrr )
 }
 
 /*
- * Sending Frames with 5 to 8 Data Bit (Datasheet page 179)
+ * Sending Frames with 5 to 8 Data Bit (datasheet page 179)
  */
 void uart_putc( unsigned char data )
 {

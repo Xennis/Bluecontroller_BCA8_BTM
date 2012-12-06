@@ -12,7 +12,7 @@
  * This file uses methods, which are Copyright (c) by Michael Dreher
  * Source: http://code.google.com/r/michaeldreher42-bluecontroller/source/browse/bluecontroller/examples/Setup_BlueController/Setup_BlueController.pde
  *
- * This sketch only works, when __no__ bluetooth connection is established or when the escape sequence is __not__ disabled
+ * This sketch only works, when __no__ Bluetooth connection is established or when the escape sequence is __not__ disabled
  *
  * Additionally this is a demo of new bootloader functions:
  *   soft_reset() (works with optiboot and other bootloaders which clear the wdt and MCUSR)
@@ -40,12 +40,11 @@ void bt_init(void)
 }
 
 /*
- * Setup Bluecontroller
- *
- * TODO: Method does not work!
+ * Setup Bluetooth module.
  */
 void bt_setut(void)
 {
+	/* Terminate the current Bluetooth connection. */
 	bt_reset();
 
 	// these setting make the connection as transparent as possible
@@ -58,7 +57,7 @@ void bt_setut(void)
 	bt_send_cmd("ATP=1234"); // set PIN
 	bt_send_cmd("ATD0"); // accept connections from any bt device
 	bt_send_cmd("ATX0"); // disable escape character (default)
-	//bt_send_cmd("ATS1"); // enable powerdown of rs-232 driver (default)
+	//bt_send_cmd("ATS1"); // enable power down of rs-232 driver (default)
 	bt_send_cmd("ATO"); // reconnect to peer
 
 	/* Allow module to save setting in flash */
@@ -68,9 +67,9 @@ void bt_setut(void)
 }
 
 /*
- * Reset the bluetooth module.
+ * Reset the Bluetooth module.
  *
- * This terminates the current bluetooth connection.
+ * This terminates the current Bluetooth connection.
  */
 void bt_reset(void)
 {
@@ -79,24 +78,23 @@ void bt_reset(void)
 }
 
 /*
- * Turn off bluetooth
+ * Turn off Bluetooth module.
  */
 void bt_turn_off( void )
 {
-	// if(bt==0) { ...
 	BC_RESET_DDR |= (1<<BC_PIN_RESET);
 	BC_RESET_PORT &= ~(1<<BC_PIN_RESET);
 	_delay_ms(50);
 }
 
 /*
- * Turn on bluetooth
+ * Turn on Bluetooth module.
  */
 void bt_turn_on( void )
 {
 	BC_RESET_PORT |= (1<<BC_PIN_RESET);
 	BC_RESET_DDR &= ~(1<<BC_PIN_RESET);
-	/* Wait until the bt module is up and running */
+	/* Wait until the module is up and running */
 	_delay_ms(6000);
 }
 
@@ -111,17 +109,17 @@ void bt_escape_sequence(void)
 }
 
 /*
- * Send a bluetooth command character.
+ * Send a character.
  */
 void bt_putc(char c)
 {
 	uart_putc(c);
-	/* Slow down communcation for BTM-222 */
+	/* Slow down communication for BTM-222 */
 	_delay_ms(50); 
 }
 
 /*
- * Send a bluetooth command string (char*).
+ * Send a string (char*).
  */
 void bt_puts(char* s)
 {
@@ -133,7 +131,7 @@ void bt_puts(char* s)
 }
 
 /*
- * Send a bluetooth command.
+ * Send a Bluetooth command.
  */
 void bt_send_cmd(char* s)
 {
@@ -161,5 +159,6 @@ void bt_send_cmd(char* s)
 			_delay_ms(250);	
 		}
 	}
+	// if(bt==0) { ... off
 	return bt;
 }*/

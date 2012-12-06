@@ -10,11 +10,14 @@
  */
 #include "bluecontroller.h"
 
+/*
+ * TODO: Change return type to void
+ */
 int main(void)
 {
 	bt_init();
-	/* write data persistent EEPROM/Flash => only necessary one time */
-	bt_setut();
+	/* Write data persistent EEPROM/Flash => only necessary one time */
+	//bt_setut();
 
 	while(1) {
 		bt_puts("Was ");

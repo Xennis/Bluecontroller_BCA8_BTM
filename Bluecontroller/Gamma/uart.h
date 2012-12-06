@@ -15,7 +15,7 @@
 	#define MCU     atmega328p
 	#define F_CPU	8000000UL		// FOSC / Clock Speed (ATmega328P)
 	#define BAUD	19200			// Baud rate (Bluecontroller)
-	#define MYUBRR	F_CPU/16/BAUD-1	// =25
+	#define MYUBRR	F_CPU/16/BAUD-1	// = 25
 
 	/* Include */
 	#include <avr/io.h>
