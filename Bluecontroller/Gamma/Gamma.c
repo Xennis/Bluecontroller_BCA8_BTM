@@ -1,31 +1,20 @@
 /*
  * Beta.c
  *
- * Created: 30.11.2012
+ * Created: 06.12.2012
  *  Program: Atmel Studio 6
- *  Author: Fabi Rosenthal
+ *  Author: Fabi Rosenthal, Florian T.
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
  *  Code: http://github.com/Xennis/Bluecontroller_BCA8_BTM
  *  Documentation: http://wiki.xennis.de/artikel/Bluecontroller
  */
 #include "bluecontroller.h"
 
-int led(void);
-
 int main(void)
 {
-
 	bt_init();
 	/* write data persistent EEPROM/Flash => only necessary one time */
 	bt_setut();
-	
-	// TODO: Replace with bt_putc(MCUSR)?
-	
-	/* Wait for empty transmit buffer */
-//	while ( !( UCSRA & (1<<UDRE)) ) // TODO: Missing semicolon?
-//	UDR = MCUSR;
-
-	//bt_check_turn_off()
 
 	while(1) {
 		bt_puts("Was ");
@@ -51,13 +40,6 @@ ISR( USART_RX_vect )
 		bt_turn_off();
 	}
 	
-	// TODO: Replace with bt_putc(buffer)?
-	
 	/* Send buffer back */
-//	bt_putc(buffer);
-	
-	/* Wait for empty transmit buffer */
-//	while ( !( UCSRA & (1<<UDRE)) );
-	/* ... and immediately send back */
-//	UDR = buffer;
+	//bt_putc(buffer);
 }
