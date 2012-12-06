@@ -147,7 +147,7 @@ uint8_t bt_check_turn_off( void )
 	PORTB|= (1<<PORTB7);
 	for (i = 30; i> 1; i--)
 	{
-		led();
+		//led();
 		_delay_ms(1000);
 		if ( !(PIND & (1<<PIND2)) ) {
 			bt=1;

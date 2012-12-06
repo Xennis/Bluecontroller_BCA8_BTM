@@ -10,13 +10,10 @@
  */
 #include "bluecontroller.h"
 
-void md_wait(void);
 int led(void);
 
 int main(void)
 {
-
-	uint8_t i;
 
 	bt_init();
 	/* write data persistent EEPROM/Flash => only necessary one time */
@@ -25,43 +22,14 @@ int main(void)
 	// TODO: Replace with bt_putc(MCUSR)?
 	
 	/* Wait for empty transmit buffer */
-	while ( !( UCSRA & (1<<UDRE)) ) // TODO: Missing semicolon?
-	UDR = MCUSR;
+//	while ( !( UCSRA & (1<<UDRE)) ) // TODO: Missing semicolon?
+//	UDR = MCUSR;
 
 	//bt_check_turn_off()
 
 	while(1) {
-		bt_puts("Was\n");
+		bt_puts("Was ");
 		_delay_ms(1000);
-		
-		if ( !(PIND & (1<<PIND2)) ) {
-			
-			DIMMSTART:
-			
-			while (OCR0B>20) {
-				for (i = 235-OCR0B; i> 1; i--) {
-					_delay_us(250);		
-				}
-				--OCR0B;
-			}
-			
-			md_wait();
-			// _delay_ms(5000);
-			
-			while (OCR0B<235) {
-				
-				for (i = 235-OCR0B; i> 1; i--) {
-					_delay_ms(2);	
-				}
-				
-				//  _delay_ms(DELAY_fall);
-				
-				++OCR0B;
-				if ( !(PIND & (1<<PIND2)) ) {
-					goto DIMMSTART;	
-				}			
-			}
-		}		
 	}
 }
 
@@ -76,61 +44,20 @@ ISR( USART_RX_vect )
 	buffer = UDR;
 
 	if ( buffer == 'x' ) {
-		bt_puts("hallo\n");
+		bt_puts("HalloWelt ");
 		_delay_ms(3000);
+	}
+	else if ( buffer == 'y' ) {
+		bt_turn_off();
 	}
 	
 	// TODO: Replace with bt_putc(buffer)?
 	
-	/* Wait for empty transmit buffer */
-	while ( !( UCSRA & (1<<UDRE)) );
-	/* ... and immediately send back */
-	UDR = buffer;
-}
-
-
-
-
-/*
- * TODO: needed?
- */
-void md_wait( void )
-{
-	uint8_t i;
-
-	for (i = 60; i> 1; i--) {
-		_delay_ms(1000);
-		/* INT0 as PD2 */
-		if ( !(PIND & (1<<PIND2)) ) {
-			if (i<600) {
-				i=i+10;
-			}
-			led();
-		}
-	}
+	/* Send buffer back */
+//	bt_putc(buffer);
 	
-}
-
-/*
- * TODO: needed?
- * TODO: change return type to void?
- */
-int led( void )
-{	
-	/* Enable pin as output by setting the data direction register */
-	DDRB |= (1<<DDB6); // LED as PB6
-	PORTB |= (1<<PORTB6);
-	_delay_ms(20);
-	PORTB &= ~(1<<PORTB6);
-	_delay_ms(20);
-	/*for(i=0; i<10; i++) {
-		// led on, pin=0
-		PORTB &= ~(1<<PORTB6);
-		_delay_ms(DELAY_MS);
-		// set output to 5V, LED off
-		PORTB|= (1<<PORTB6);
-		_delay_ms(DELAY_MS2);
-	}*/
-
-	return(0);
+	/* Wait for empty transmit buffer */
+//	while ( !( UCSRA & (1<<UDRE)) );
+	/* ... and immediately send back */
+//	UDR = buffer;
 }
