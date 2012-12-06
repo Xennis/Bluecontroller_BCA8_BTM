@@ -1,9 +1,13 @@
 # Bluecontroller (BCA8-BTM)
 
-Atmel Studio 6 C-Project to send and receive text:
+Atmel Studio 6 C-Project to send and receive text over Bluetooth:
 
 	Microcontroller <-> UART <->    Bluetooth    <-> COM Port <-> PC
 
+Exactly:
+
+	ATmega328p <-> USART0 <-> BTM-222 <->    Bluetooth    <-> Bluetooth dongle <-> COM Port <-> RS232 Terminal <-> Windows-PC
+	
 ## Project
 
 Author: Fabi Rosenthal (code@xennis.de), Florian T.
@@ -24,3 +28,7 @@ Acknowledgement: Thanks to the support of Patrick W., Michael Dreher and Kamil L
 
 * Atmel Studio 6
 * RS232 Terminal
+
+## Code
+
+Latest Version: Gamma (tested and proven to work)

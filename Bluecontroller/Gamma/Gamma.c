@@ -1,5 +1,5 @@
 /*
- * Beta.c
+ * Gamma.c
  *
  * Created: 06.12.2012
  *  Program: Atmel Studio 6

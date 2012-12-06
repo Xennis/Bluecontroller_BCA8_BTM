@@ -1,7 +1,7 @@
 /*
  * bluecontroller.c
  *
- * Created: 30.11.2012
+ * Created: 06.12.2012
  *  Program: Atmel Studio 6
  *  Author: Fabi Rosenthal, Michael Dreher (see note)
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)

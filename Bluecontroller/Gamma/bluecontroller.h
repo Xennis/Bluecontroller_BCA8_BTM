@@ -1,7 +1,7 @@
 /*
  * bluecontroller.h
  *
- * Created: 30.11.2012
+ * Created: 06.12.2012
  *  Program: Atmel Studio 6
  *  Author: Fabi Rosenthal
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
@@ -12,7 +12,7 @@
 	#define BLUECONTROLLER_H_
 
 	/* Include */
-	#include "uart.h"		// defines F_CPU => important to include before <util/delay.h>
+	#include "uart.h"		// Defines F_CPU => important to include before <util/delay.h>
 	#include <inttypes.h>
 	#include <avr/io.h>
 	#include <util/delay.h>
