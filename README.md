@@ -31,4 +31,4 @@ Acknowledgement: Thanks to the support of Patrick W., Michael Dreher and Kamil L
 
 ## Code
 
-Latest Version: Gamma (tested and proven to work)
+Latest stable Version: Gamma (tested and proven to work)
