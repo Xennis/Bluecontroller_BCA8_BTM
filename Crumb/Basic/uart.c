@@ -20,7 +20,7 @@ void uart_init( void )
 	UBRRL = UBRR_VAL & 0xFF;
 	/* Enable receiver and transmitter */
 	UCSRB |= (1<<TXEN0);
-	/* Set frame format: 8data, 2stop bit */
+	/* Set frame format: 8data, 2stop bit (USBS0) */
 	UCSRC |= (1<<USBS0)|(3<<UCSZ00);
 }
  

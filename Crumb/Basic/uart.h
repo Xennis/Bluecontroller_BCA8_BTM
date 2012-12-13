@@ -14,13 +14,13 @@
 	#define UART_H_
  
 	/* Define */
-	#define F_CPU	20000000UL	// Clock Speed = 20.000MHz
-	#define BAUD	115200UL	// Baud rate
-	#define UBRR_VAL	((F_CPU+BAUD*8)/(BAUD*16)-1) // =??
+	#define F_CPU	20000000UL		// Clock Speed = 20.000MHz
+	#define BAUD	115200			// Baud rate
+	#define UBRR_VAL	((F_CPU+BAUD*8)/(BAUD*16)-1) // = 10
  
 	/* Includes */
 	#include <avr/io.h>
-	#include <util/delay.h>		// Needs defined F_CPU
+	#include <util/delay.h>			// Needs defined F_CPU
  
 	/* Register names USART0 */
 	#define UBRRH	UBRR0H

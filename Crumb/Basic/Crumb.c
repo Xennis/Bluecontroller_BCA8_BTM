@@ -17,6 +17,5 @@ int main(void)
 	while(1)
 	{
 		uart_puts("Hallo");
-		_delay_ms(1000); // Unnecessary
 	}
 }
