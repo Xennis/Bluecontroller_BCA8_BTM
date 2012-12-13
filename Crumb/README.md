@@ -1,5 +1,7 @@
 # Crumb
-	
+
+Testing UART with Crumb Modul
+
 ## Project
 
 Author: Fabi Rosenthal (code@xennis.de), Florian T.
@@ -24,7 +26,7 @@ Documentation: http://wiki.xennis.de/artikel/AVR-GCC_-_UART
 
 Code sends regularly "Hello".
 
-Setting for Terminal:
+Terminal's settings:
 * Baud: 115200
 * Data bits: 8
 * Stop bits: 2
@@ -37,7 +39,7 @@ Status: tested and proven to work
 
 Code sends regularly "Hello". If you transmit an "x", it answers (interrupt driven) with "World".
 
-Setting for Terminal:
+Terminal's settings:
 * Baud: 115200
 * Data bits: 8
 * Stop bits: 1
