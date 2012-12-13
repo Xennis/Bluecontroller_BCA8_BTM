@@ -7,6 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Beta", "Beta\Beta.cproj", "
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Gamma", "Gamma\Gamma.cproj", "{6C5BF7F7-7412-4957-B5ED-498B43EA3509}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Delta", "Delta\Delta.cproj", "{C1CD548C-3360-417B-B5B5-BA616357278C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -25,6 +27,10 @@ Global
 		{6C5BF7F7-7412-4957-B5ED-498B43EA3509}.Debug|AVR.Build.0 = Debug|AVR
 		{6C5BF7F7-7412-4957-B5ED-498B43EA3509}.Release|AVR.ActiveCfg = Release|AVR
 		{6C5BF7F7-7412-4957-B5ED-498B43EA3509}.Release|AVR.Build.0 = Release|AVR
+		{C1CD548C-3360-417B-B5B5-BA616357278C}.Debug|AVR.ActiveCfg = Debug|AVR
+		{C1CD548C-3360-417B-B5B5-BA616357278C}.Debug|AVR.Build.0 = Debug|AVR
+		{C1CD548C-3360-417B-B5B5-BA616357278C}.Release|AVR.ActiveCfg = Release|AVR
+		{C1CD548C-3360-417B-B5B5-BA616357278C}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
