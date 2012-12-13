@@ -16,17 +16,32 @@ Documentation: http://wiki.xennis.de/artikel/AVR-GCC_-_UART
 ## Software
 
 * Atmel Studio 6
-* PuTTY
+* RS232 Terminal
 
 ## Code Versions
 
 ### Basic
 
-Simple code (its sends only "Hallo", "Hallo", etc.)
+Code sends regularly "Hello".
 
-Setting for Putty:
+Setting for Terminal:
 * Baud: 115200
-* Data bits:	8
-* Stop bits:	2
+* Data bits: 8
+* Stop bits: 2
 * Parity: None
 * Flow control: None
+
+Status: tested and proven to work
+
+### Advanced
+
+Code sends regularly "Hello". If you transmit an "x", it answers (interrupt driven) with "World".
+
+Setting for Terminal:
+* Baud: 115200
+* Data bits: 8
+* Stop bits: 1
+* Parity: None
+* Flow control: None
+
+Status: tested and proven to work

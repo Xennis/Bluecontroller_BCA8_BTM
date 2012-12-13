@@ -20,6 +20,8 @@
  
 	/* Includes */
 	#include <avr/io.h>
+	#include <util/delay.h>			// Uses defined F_CPU
+	#include <avr/interrupt.h>		// Used for sei(), cli() and ISR()
  
 	/* Register names USART0 */
 	#define UBRRH	UBRR0H
@@ -39,6 +41,7 @@
 	#define TXB8	TXB80
  
  	void uart_init(void);
+	void uart_timer_init(void);
  	void uart_putc(unsigned char data);
 	void uart_puts(char *s);
  
