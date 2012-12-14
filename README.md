@@ -33,7 +33,7 @@ Acknowledgement: Thanks to the support of Patrick W., Michael Dreher and Kamil L
 
 Latest stable Version: Gamma (tested and proven to work)
 
-All version:
+All Versions:
 * Delta: experimental
 * Gamma: stable
 * Beta: deprecated
