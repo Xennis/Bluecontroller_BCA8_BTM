@@ -32,3 +32,9 @@ Acknowledgement: Thanks to the support of Patrick W., Michael Dreher and Kamil L
 ## Code
 
 Latest stable Version: Gamma (tested and proven to work)
+
+All version:
+* Delta: experimental
+* Gamma: stable
+* Beta: deprecated
+* Alpha: deprecated
