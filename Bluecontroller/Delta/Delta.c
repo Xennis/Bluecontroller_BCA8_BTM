@@ -15,6 +15,7 @@ unsigned char* cmdBuffer;	// used to store incoming commands
 // declare methods
 void checkCmd();
 void readCmd(unsigned char nextChar);
+void statusLED(int status);
 
 /*
  * TODO: Change return type to void
@@ -51,23 +52,61 @@ void readCmd(unsigned char nextChar)
  */
 void checkCmd()
 {
-	int v;
+	int v, status;
 	v = strcmp(cmdBuffer,"wuseldusel");
 	if(v==0) {
 		//react to command wuseldusel
+		status = 1;
 	}
 	v= strcmp(cmdBuffer,"ganzTollerBefehl");
 	if(v==0) {
 		// react to command gnazTollerBefehl);
+		status = 1;
+	}
+	else {	// invalid command
+		status = 2;
 	}
 	*cmdBuffer = '\0';				// reset commandBuffer 
 	sei();							// enable interrupts again
+	statusLED(status);
+}
+
+/*
+ * This method is used for debugging purpose. If a correct command is detected
+ * (status 1) the Bluecontorller LED blinks slow for a while. If an incorrect
+ * command is detected (status 2) the LED blinks fast. In all other cases
+ * (status 0) the LED is turned off.
+ */
+void statusLED(int status) {
+	DDRB |= (1<<DDB6);			// define PortB->LED as output ... TODO: put it somewhere else
+	switch (status)
+	{
+	case 1:
+		while(0) {					// TODO: not to long and not to short
+			PORTB = (0<<PB6);
+			// TODO: long delay
+			PORTB |= (1<<PB6);
+			// TODO: long delay
+		}			
+		break;
+	case 2:
+			while(0) {				// TODO: not to long and not to short
+			PORTB = (0<<PB6);
+			// TODO: short delay
+			PORTB |= (1<<PB6);
+			// TODO: short delay
+		}
+		break;
+	default:
+		PORTB = (0<<PB6);
+		break;
+	}
 }		
 
 
 /*
  * This interrupt is fired if new data is available in USART receive buffer
-  */
+ */
 ISR( USART_RX_vect )
 {
 	unsigned char buffer;
@@ -76,7 +115,6 @@ ISR( USART_RX_vect )
 	readCmd(buffer);
 /*
 	// react to characters
->>>>>>> Add delta branch
 	if ( buffer == 'x' ) {
 		bt_puts("HalloWelt ");
 		_delay_ms(3000);
