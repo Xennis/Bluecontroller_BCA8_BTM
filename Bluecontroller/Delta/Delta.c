@@ -8,42 +8,28 @@
  *  Code: http://github.com/Xennis/Bluecontroller_BCA8_BTM
  *  Documentation: http://wiki.xennis.de/artikel/Bluecontroller
  */
-#include "bluecontroller.h"
 
-// global variables
-unsigned char* cmdBuffer;	// used to store incoming commands
-// declare methods
-void checkCmd();
-void readCmd(unsigned char nextChar);
-void statusLED(int status);
 
-/*
- * TODO: Change return type to void
- */
+#include "delta.h"
+
+
 int main(void)
 {
 	bt_init();
 	/* Write data persistent EEPROM/Flash => only necessary one time */
 	//bt_setut();
+	/*
 	while(1) {
 		bt_puts("Was ");
 		_delay_ms(1000);
 	}
+	*/
+	while(1) {
+		checkCmd();
+	}
 }
 
-/*
- * This method adds an incoming character to the commandBuffer and hands out
- * the command if \n occurs 
- */
-void readCmd(unsigned char nextChar)
-{	
-	*cmdBuffer++ = nextChar;
-		if(nextChar=='\n') {
-			*cmdBuffer = '\0';		// finalize c string if command complete
-			cli();					// disable interrupts for a while
-			checkCmd();
-		}
-}
+
 
 /*
  * This method checks if received command is a valid command and react to it.
@@ -52,22 +38,18 @@ void readCmd(unsigned char nextChar)
  */
 void checkCmd()
 {
+	while(uart_str_complete!=1);	//wait for complete command
 	int v, status;
-	v = strcmp(cmdBuffer,"wuseldusel");
+	v = strcmp(uart_string,"wuseldusel");
 	if(v==0) {
-		//react to command wuseldusel
-		status = 1;
-	}
-	v= strcmp(cmdBuffer,"ganzTollerBefehl");
-	if(v==0) {
-		// react to command gnazTollerBefehl);
+		//TODO react to command
+		bt_puts("xyz");
 		status = 1;
 	}
 	else {	// invalid command
 		status = 2;
 	}
-	*cmdBuffer = '\0';				// reset commandBuffer 
-	sei();							// enable interrupts again
+	uart_str_complete = 0;			// reset command
 	statusLED(status);
 }
 
@@ -84,17 +66,17 @@ void statusLED(int status) {
 	case 1:
 		while(0) {					// TODO: not to long and not to short
 			PORTB = (0<<PB6);
-			// TODO: long delay
+			_delay_ms(1000);
 			PORTB |= (1<<PB6);
-			// TODO: long delay
+			_delay_ms(1000);
 		}			
 		break;
 	case 2:
 			while(0) {				// TODO: not to long and not to short
 			PORTB = (0<<PB6);
-			// TODO: short delay
+			_delay_ms(500);
 			PORTB |= (1<<PB6);
-			// TODO: short delay
+			_delay_ms(500);
 		}
 		break;
 	default:
@@ -103,26 +85,26 @@ void statusLED(int status) {
 	}
 }		
 
-
 /*
  * This interrupt is fired if new data is available in USART receive buffer
  */
 ISR( USART_RX_vect )
 {
-	unsigned char buffer;
+	unsigned char nextChar;
 	/* Read data from buffer */
-	buffer = UDR;
-	readCmd(buffer);
-/*
-	// react to characters
-	if ( buffer == 'x' ) {
-		bt_puts("HalloWelt ");
-		_delay_ms(3000);
+	nextChar = UDR;
+	//readCmd(nextChar);
+	if( uart_str_complete == 0 ) {	// only if uart_string is currently not in use
+		if( nextChar != '\n' &&
+		nextChar != '\r' &&
+		uart_str_count < UART_MAXSTRLEN ) {
+			uart_string[uart_str_count] = nextChar;
+			uart_str_count++;
+		}
+		else {
+			uart_string[uart_str_count] = '\0';
+			uart_str_count = 0;
+			uart_str_complete = 1;
+		}
 	}
-	else if ( buffer == 'y' ) {
-		bt_turn_off();
-	}
-*/	
-	/* Send buffer back */
-	//bt_putc(buffer);
 }
