@@ -34,9 +34,10 @@ void bt_init(void)
 		
 	/* UART and timer */
 	uart_init(MYUBRR);
-	sei(); // TODO: call after timer_init()?
-	uart_timer_init();
+	sei();
 	_delay_ms(100);
+	
+	bt_debug("init");
 }
 
 /*
@@ -64,6 +65,8 @@ void bt_setut(void)
 	_delay_ms(1000);
 	/* Activate new settings */
 	bt_reset();
+	
+	bt_debug("reset");
 }
 
 /*
@@ -115,7 +118,7 @@ void bt_putc(char c)
 {
 	uart_putc(c);
 	/* Slow down communication for BTM-222 */
-	_delay_ms(50); 
+	_delay_ms(BC_PUTC_DELAY); 
 }
 
 /*
@@ -162,3 +165,14 @@ void bt_send_cmd(char* s)
 	// if(bt==0) { ... off
 	return bt;
 }*/
+
+/*
+ * Send a string, if debug is on.
+ */
+void bt_debug(char* s)
+{
+	#ifdef BC_DEBUG
+		bt_puts("BC_");
+		bt_puts(s);
+	#endif
+}

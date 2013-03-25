@@ -1,7 +1,7 @@
 /*
  * uart.h
  *
- * Created: 06.12.2012
+ * Created: 24.03.2013
  *  Program: Atmel Studio 6
  *  Author: Fabi Rosenthal, Florian T.
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
@@ -40,7 +40,6 @@
 
 	/* Method */
 	void uart_init(unsigned int ubrr);
-	void uart_timer_init(void);
 	void uart_putc(unsigned char data);
 
 #endif /* UART_H_ */

@@ -67,6 +67,12 @@
     <Compile Include="bluecontroller.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="cmd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="cmd.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Delta.c">
       <SubType>compile</SubType>
     </Compile>

@@ -22,6 +22,8 @@
 	#define BC_RESET_PORT	PORTB
 	#define BC_RESET_PIN	PINB
 	#define BC_RESET_DDR	DDRB
+	#define BC_PUTC_DELAY	10		// Delay (in ms) after send a char
+	#define BC_DEBUG				// Activate bt_debug method
 
 	/* Method */
 	void bt_init(void);
@@ -34,5 +36,6 @@
 	void bt_puts(char* s);
 	void bt_send_cmd(char* s);
 	//uint8_t bt_check_turn_off(void);
+	void bt_debug(char* s);
 
 #endif /* BLUECONTROLLER_H_ */
