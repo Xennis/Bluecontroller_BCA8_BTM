@@ -1,11 +1,15 @@
-/*
- * bluecontroller.c
+/**
+ * @file	bluecontroller.c
+ * @author	Fabi Rosenthal, Michael Dreher (see note)
+ * @version	Epsilon
+ * @date	25.03.2013
  *
- * Created: 06.12.2012
- *  Program: Atmel Studio 6
- *  Author: Fabi Rosenthal, Michael Dreher (see note)
+ * @section LICENSE
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+ *
+ * @section DESCRIPTION
  *  Code: http://github.com/Xennis/Bluecontroller_BCA8_BTM
+ *
  *  Documentation: http://wiki.xennis.de/artikel/Bluecontroller
  *
  * Note: 
@@ -20,18 +24,13 @@
  */  
 #include "bluecontroller.h"
 
-/*
+/**
  * Initialization
+ *
+ *		Initialize Bluecontroller
  */
 void bt_init(void)
 {
-	/* Configure port D */
-	//DDRD &= ~(1<<DDD2);
-	//PORTD |= (1<<PORTD2);
-	/* Configure port B */
-	//DDRB |= (1<<DDB7);
-	//PORTB |= (1<<PORTB7);
-		
 	/* UART and timer */
 	uart_init(MYUBRR);
 	sei();
@@ -40,15 +39,17 @@ void bt_init(void)
 	bt_debug("init");
 }
 
-/*
- * Setup Bluetooth module.
+/**
+ * Setup
+ *
+ *		Setup Bluetooth module
  */
 void bt_setut(void)
 {
 	/* Terminate the current Bluetooth connection. */
 	bt_reset();
 
-	// these setting make the connection as transparent as possible
+	/* these setting make the connection as transparent as possible */
 	bt_send_cmd("\rAT"); // make sure the module is not in sleep mode
 	bt_send_cmd("ATE0"); // disable echo
 	bt_send_cmd("ATQ1"); // disable result code
@@ -69,10 +70,10 @@ void bt_setut(void)
 	bt_debug("reset");
 }
 
-/*
- * Reset the Bluetooth module.
+/**
+ * Reset the Bluetooth module
  *
- * This terminates the current Bluetooth connection.
+ *		This terminates the current Bluetooth connection.
  */
 void bt_reset(void)
 {
@@ -80,8 +81,10 @@ void bt_reset(void)
 	bt_turn_on();
 }
 
-/*
- * Turn off Bluetooth module.
+/**
+ * Turn off Bluetooth module
+ *
+ *		Turns off Bluetooth module
  */
 void bt_turn_off(void)
 {
@@ -90,8 +93,10 @@ void bt_turn_off(void)
 	_delay_ms(50);
 }
 
-/*
- * Turn on Bluetooth module.
+/**
+ * Turn on Bluetooth module
+ *
+ *		Turns on the Bluetooth module
  */
 void bt_turn_on(void)
 {
@@ -101,8 +106,10 @@ void bt_turn_on(void)
 	_delay_ms(6000);
 }
 
-/*
- * Send escape sequence (+++).
+/**
+ * Send escape sequence
+ *
+ *		Sends escape sequence (+++)
  */
 void bt_escape_sequence(void)
 {
@@ -111,8 +118,12 @@ void bt_escape_sequence(void)
 	_delay_ms(1200);  
 }
 
-/*
- * Send a character.
+/**
+ * Send a character
+ *
+ *		Sends a character
+ *
+ * @param c character
  */
 void bt_putc(char c)
 {
@@ -121,8 +132,12 @@ void bt_putc(char c)
 	_delay_ms(BC_PUTC_DELAY); 
 }
 
-/*
- * Send a string (char*).
+/**
+ * Send a string
+ *
+ *		Sends a string (char*)
+ *
+ * @param s string
  */
 void bt_puts(char* s)
 {
@@ -133,8 +148,12 @@ void bt_puts(char* s)
 	}
 }
 
-/*
- * Send a Bluetooth command.
+/**
+ * Send a command
+ *
+ *		Sends a Bluecontroller command (needed for setup)
+ *
+ * @param s string
  */
 void bt_send_cmd(char* s)
 {
@@ -143,8 +162,12 @@ void bt_send_cmd(char* s)
 	bt_putc('\r');
 }
 
-/*
- * Send a string, if debug is on.
+/**
+ * Debug method
+ *
+ *		Send a string, if debug is on.
+ *
+ * @param s string
  */
 void bt_debug(char* s)
 {
@@ -177,8 +200,12 @@ void bt_debug(char* s)
 	return bt;
 }*/
 
-/*
- * Turn LED on (i==1) / off (i!=1)
+/**
+ * Turn LED on or off
+ *
+ *		Turns LED on (i==1) / off (i!=1).
+ *
+ * @param i If i==1 turn LED on, else off
  */
 void bt_led_on(uint8_t i)
 {

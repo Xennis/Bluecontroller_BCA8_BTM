@@ -6,7 +6,7 @@ Atmel Studio 6 C-Project to send and receive text over Bluetooth:
 
 Exactly:
 
-	ATmega328p <-> USART0 <-> BTM-222 <->    Bluetooth    <-> Bluetooth dongle <-> COM Port <-> RS232 Terminal <-> Windows-PC
+	ATmega328p <-> USART0 <-> BTM-222 <->    Bluetooth    <-> Bluetooth dongle <-> COM Port <-> RS232 Terminal <-> PC
 	
 ## Project
 
@@ -43,11 +43,11 @@ All Versions:
 
 Properties:
 * Setup Bluecontroller *bluecontroller.c -> void bt_setut(void)*
-* Send strings *bluecontroller.c -> void bt_puts(char* s)*
-* Receive strings (interrupt driven) *cmd.c -> ISR( USART_RX_vect )*
+* Send strings *bluecontroller.c -> void bt_puts(char\* s)*
+* Receive strings (interrupt driven) *cmd.c -> ISR(USART_RX_vect)*
 * Receive commands and react *cmd.c -> void checkCmd(void)*
 
 Commands (for testing):
-* *wusel* -> BC sends "xyz" back
+* *wusel* -> BC sends "xyz" back (intended as handshake ack)
 * *ledOn* -> BC sends "abc" back and turns led on
 * *ledOff* -> BC sends "123" back and turns led off
