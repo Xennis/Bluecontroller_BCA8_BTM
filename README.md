@@ -31,10 +31,23 @@ Acknowledgement: Thanks to the support of Patrick W., Michael Dreher and Kamil L
 
 ## Code
 
-Latest stable Version: Gamma (tested and proven to work)
+Latest stable Version: Delta (tested and proven to work)
 
 All Versions:
-* Delta: experimental
-* Gamma: stable
+* Delta: stable
+* Gamma: deprecated
 * Beta: deprecated
 * Alpha: deprecated
+
+### Delta Version
+
+Properties:
+* Setup Bluecontroller *bluecontroller.c -> void bt_setut(void)*
+* Send strings *bluecontroller.c -> void bt_puts(char* s)*
+* Receive strings (interrupt driven) *cmd.c -> ISR( USART_RX_vect )*
+* Receive commands and react *cmd.c -> void checkCmd(void)*
+
+Commands (for testing):
+* *wusel* -> BC sends "xyz" back
+* *ledOn* -> BC sends "abc" back and turns led on
+* *ledOff* -> BC sends "123" back and turns led off
