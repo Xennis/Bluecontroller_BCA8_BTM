@@ -12,7 +12,7 @@ Documentation: http://wiki.xennis.de/artikel/AVR-GCC_-_UART
 
 ## Hardware
 
-* Crumb168 V2.3 AVR ATmega Modul
+* Crumb328 V2.3 AVR ATmega Modul
 * Atmel AVR ATmega328
 
 ## Software

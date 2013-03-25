@@ -1,0 +1,24 @@
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+#############
+## Atmel Studio 6
+#############
+
+*.atsuo
+*.d
+*.eep
+*.elf
+*.lss
+*.map
+*.o
+*.mk
+Makefile
+TcfTransactionLog.csv
