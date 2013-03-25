@@ -29,8 +29,13 @@ void checkCmd()
 	if(strcmp(uart_string_val, "wusel") == 0) {
 		bt_puts("xyz");
 	}
-	else if(strcmp(uart_string_val, "dusel") == 0) {
+	else if(strcmp(uart_string_val, "ledOn") == 0) {
 		bt_puts("abc");
+		bt_led_on(1);
+	}
+	else if(strcmp(uart_string_val, "ledOff") == 0) {
+		bt_puts("123");
+		bt_led_on(0);
 	}
 	else {
 		// send invalid command back

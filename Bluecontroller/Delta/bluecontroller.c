@@ -144,6 +144,17 @@ void bt_send_cmd(char* s)
 }
 
 /*
+ * Send a string, if debug is on.
+ */
+void bt_debug(char* s)
+{
+	#ifdef BC_DEBUG
+		bt_puts("BC_");
+		bt_puts(s);
+	#endif
+}
+
+/*
  * Wait and check, if no command to keep it on
  *
  * @return 1 wenn aktiv, 0 wenn nicht aktiv
@@ -167,12 +178,15 @@ void bt_send_cmd(char* s)
 }*/
 
 /*
- * Send a string, if debug is on.
+ * Turn LED on (i==1) / off (i!=1)
  */
-void bt_debug(char* s)
+void bt_led_on(uint8_t i)
 {
-	#ifdef BC_DEBUG
-		bt_puts("BC_");
-		bt_puts(s);
-	#endif
+	BC_RESET_DDR |= (1<<BC_PIN_LED);
+	if(i == 1) {
+		BC_RESET_PORT = (1 << BC_PIN_LED);
+	} else {
+		BC_RESET_PORT = (0 << BC_PIN_LED);
+	}
+	
 }

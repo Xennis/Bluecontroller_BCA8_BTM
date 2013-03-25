@@ -18,6 +18,7 @@
 	#include <util/delay.h>
 
 	/* Define (BC=Bluecontroller) */
+	#define BC_PIN_LED		PINB6	// PIN 19 (PB6): LED
 	#define BC_PIN_RESET	PINB7	// PIN 20 (PB7): BT-Reset
 	#define BC_RESET_PORT	PORTB
 	#define BC_RESET_PIN	PINB
@@ -37,5 +38,6 @@
 	void bt_send_cmd(char* s);
 	//uint8_t bt_check_turn_off(void);
 	void bt_debug(char* s);
+	void bt_led_on(uint8_t i);
 
 #endif /* BLUECONTROLLER_H_ */
