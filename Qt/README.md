@@ -16,7 +16,7 @@ Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
 ## Software and Code
 
 * Qt Creator
-* Qt 4.8.1 for Desktop (MinGW)
+* Qt 4.8.1 for Desktop
 * QextSerialPort 1.2rc
 * Bluecontroller Epsilon Version
 
@@ -28,3 +28,9 @@ Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
 * Copy the *Bluecontroller Epsilon Version* to Bluecontroller device
 * Connect your PC with the *Bluecontroller* (PIN code *1234*) 
 * Run the Qt code
+
+## Code
+
+Tested and proven to work.
+
+Code was tested with: Windows 7 64-Bit, Raspbian "wheezy" (Raspberry Pi)

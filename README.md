@@ -31,15 +31,16 @@ Acknowledgement: Thanks to the support of Patrick W., Michael Dreher and Kamil L
 
 ## Code
 
-Latest stable Version: Delta (tested and proven to work)
+Latest stable Version: Epsilon (tested and proven to work)
 
 All Versions:
-* Delta: stable
+* Epsilon: stable
+* Delta: deprecated
 * Gamma: deprecated
 * Beta: deprecated
 * Alpha: deprecated
 
-### Delta Version
+### Epsilon Version
 
 Properties:
 * Setup Bluecontroller *bluecontroller.c -> void bt_setut(void)*
