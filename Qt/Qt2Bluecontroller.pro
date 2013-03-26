@@ -17,6 +17,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp
 
-# Alles Nötige für die RS232 Benutzung
+# For RS232 usage
 include(PortControl/PortControl.pri)
 include(qextserialport/src/qextserialport.pri)

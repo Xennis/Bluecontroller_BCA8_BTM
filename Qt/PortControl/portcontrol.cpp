@@ -3,7 +3,8 @@
 PortControl::PortControl()
 {
     qDebug("Created PortControl");
-    /* init */
+
+    /* Init variables */
     this->isBc = false;
     this->bcAck = "wusel";
     this->bcAckReturn = "xyz";
@@ -39,15 +40,18 @@ void PortControl::searchBluecontroller(){
             /* Send handshake ack to Bluecontroller */
             this->writePort(this->bcAck);
 
+            int timeout = 100000;
             int expectedLength = 3;
             QString returnData;
 
-            while(returnData.length() < expectedLength) {
+            /* Wait for return ack */
+            while(timeout > 0 && returnData.length() < expectedLength) {
                 QString ret = this->readPort();
                 if (!ret.isEmpty()) {
                     //qDebug() << "Port->read" << ret;
                     returnData.append(ret);
                 }
+                timeout = timeout - 1;
             }
 
             /* Check returnData is expected handshake ack */

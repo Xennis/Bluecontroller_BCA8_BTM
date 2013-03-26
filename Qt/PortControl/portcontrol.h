@@ -17,9 +17,37 @@ class PortControl : public QThread
 public:
     explicit PortControl();
 
+    /**
+      * Search Bluecontroller
+      *
+      *     Searches the port and tries to connect with it.
+      */
     void searchBluecontroller();
+
+    /**
+      * Test Bluecontroller
+      *
+      *     Sends the commands "ledOn" and "ledOff" to the
+      *     Bluecontroller.
+      */
     void testBluecontroller();
+
+    /**
+      * Write port
+      *
+      *     Sends a string.
+      *
+      * @return true, if writing was sucessful
+      */
     bool writePort(QString);
+
+    /**
+      * Read port
+      *
+      *     Waits (active) for bytes and return them.
+      *
+      * @return Received string (or empty string)
+      */
     QString readPort();
 
 private:
