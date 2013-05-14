@@ -10,18 +10,18 @@ Exactly:
 	
 ## Project
 
-Institut of Computer Engineering, University of Lübeck:
+Institute of Computer Engineering, University of Lübeck:
 
 * Author: Fabi Rosenthal (code@xennis.de), Florian Thaeter, Mai Linh E. N.
 * Supervisor: Dipl.-Ing. Patrick Weiss, Dipl.-Inf. Alexander Gabrecht
 
-### mReS - modular rehabilitation system
+### mReS - Modular Rehabilitation System
 
-This project was developed as part of the mReS project at the Institut of Computer Engineering - University of Lübeck:
+This project was developed as part of the mReS project at the Institute of Computer Engineering - University of Lübeck:
 
 mReS is a modular rehabilitation system for training of hand function after stroke. The modularity allows a broad spectrum of training and progress assessment possibilities while reducing the complexity and cost. This facilitates a wider distribution into clinics and home rehabilitation. The system makes of visual feedback distortion, which has been introduced as a new concept in neurorehabilitation. The patient is encouraged to reach beyond prior achievements by giving slightly distorted feedback.
 
-mReS project site: http://www.iti.uni-luebeck.de/en/research/mobile-robotics/mres.html
+mReS project: http://www.iti.uni-luebeck.de/en/research/mobile-robotics/mres.html
 
 ### Informations
 
