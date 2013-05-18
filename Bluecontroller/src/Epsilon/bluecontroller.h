@@ -2,7 +2,7 @@
  * @file	bluecontroller.h
  * @author	Fabi Rosenthal
  * @version	Epsilon
- * @date	25.03.2013
+ * @date	18.05.2013
  *
  * @section LICENSE 
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)

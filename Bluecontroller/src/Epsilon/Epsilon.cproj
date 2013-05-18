@@ -73,7 +73,7 @@
     <Compile Include="cmd.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Epsilon.c">
+    <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart.c">

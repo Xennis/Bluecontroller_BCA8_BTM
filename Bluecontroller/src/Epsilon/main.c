@@ -2,7 +2,7 @@
  * @file	Epsilon.c
  * @author	Fabi Rosenthal, Florian Thaeter
  * @version	Epsilon
- * @date	25.03.2013
+ * @date	18.05.2013
  *
  * @section LICENSE
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
@@ -17,9 +17,9 @@
 #include "cmd.h"
 
 /**
- * Main
+ * @brief Main
  *
- *	Initializes Bluecontroller and checks the commands.
+ *  Initializes Bluecontroller and checks the commands.
  */
 void main(void)
 {

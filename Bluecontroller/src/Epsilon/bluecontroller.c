@@ -1,8 +1,8 @@
 /**
  * @file	bluecontroller.c
- * @author	Fabi Rosenthal, Michael Dreher (see note)
+ * @author	Fabi Rosenthal, Florian Thaeter
  * @version	Epsilon
- * @date	25.03.2013
+ * @date	18.05.2013
  *
  * @section LICENSE
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
@@ -13,21 +13,16 @@
  *  Documentation: http://wiki.xennis.de/artikel/Bluecontroller
  *
  * Note: 
- * This file uses methods, which are Copyright (c) by Michael Dreher
+ * This file uses (with permission) methods, which are Copyright (c)
+ * by Michael Dreher
  * Source: http://code.google.com/r/michaeldreher42-bluecontroller/source/browse/bluecontroller/examples/Setup_BlueController/Setup_BlueController.pde
- *
- * This sketch only works, when __no__ Bluetooth connection is established or when the escape sequence is __not__ disabled
- *
- * Additionally this is a demo of new bootloader functions:
- *   soft_reset() (works with optiboot and other bootloaders which clear the wdt and MCUSR)
- *   enter_bootloader() (works only with BlueController optiboot bootloader and magic-word mechanism)
  */  
 #include "bluecontroller.h"
 
 /**
- * Initialization
+ * @brief Initialization
  *
- *		Initialize Bluecontroller
+ *	Initialize Bluecontroller
  */
 void bt_init(void)
 {
@@ -40,16 +35,16 @@ void bt_init(void)
 }
 
 /**
- * Setup
+ * @brief Setup
  *
- *		Setup Bluetooth module
+ *	Setup Bluetooth module
  */
 void bt_setut(void)
 {
 	/* Terminate the current Bluetooth connection. */
 	bt_reset();
 
-	/* these setting make the connection as transparent as possible */
+	/* Transparent connection settings */
 	bt_send_cmd("\rAT"); // make sure the module is not in sleep mode
 	bt_send_cmd("ATE0"); // disable echo
 	bt_send_cmd("ATQ1"); // disable result code
@@ -71,9 +66,9 @@ void bt_setut(void)
 }
 
 /**
- * Reset the Bluetooth module
+ * @brief Reset the Bluetooth module
  *
- *		This terminates the current Bluetooth connection.
+ *	This terminates the current Bluetooth connection.
  */
 void bt_reset(void)
 {
@@ -82,9 +77,9 @@ void bt_reset(void)
 }
 
 /**
- * Turn off Bluetooth module
+ * @brief Turn off Bluetooth module
  *
- *		Turns off Bluetooth module
+ *	Turns off Bluetooth module
  */
 void bt_turn_off(void)
 {
@@ -94,9 +89,9 @@ void bt_turn_off(void)
 }
 
 /**
- * Turn on Bluetooth module
+ * @brief Turn on Bluetooth module
  *
- *		Turns on the Bluetooth module
+ *	Turns on the Bluetooth module
  */
 void bt_turn_on(void)
 {
@@ -107,9 +102,9 @@ void bt_turn_on(void)
 }
 
 /**
- * Send escape sequence
+ * @brief Send escape sequence
  *
- *		Sends escape sequence (+++)
+ *	Sends escape sequence (+++)
  */
 void bt_escape_sequence(void)
 {
@@ -119,9 +114,9 @@ void bt_escape_sequence(void)
 }
 
 /**
- * Send a character
+ * @brief Send a character
  *
- *		Sends a character
+ *	Sends a character
  *
  * @param c character
  */
@@ -133,9 +128,9 @@ void bt_putc(char c)
 }
 
 /**
- * Send a string
+ * @brief Send a string
  *
- *		Sends a string (char*)
+ *	Sends a string (char*)
  *
  * @param s string
  */
@@ -149,9 +144,9 @@ void bt_puts(char* s)
 }
 
 /**
- * Send a command
+ * @brief Send a command
  *
- *		Sends a Bluecontroller command (needed for setup)
+ *	Sends a Bluecontroller command (needed for setup)
  *
  * @param s string
  */
@@ -163,9 +158,9 @@ void bt_send_cmd(char* s)
 }
 
 /**
- * Debug method
+ * @brief Debug method
  *
- *		Send a string, if debug is on.
+ *	Send a string, if debug is on.
  *
  * @param s string
  */
@@ -178,7 +173,9 @@ void bt_debug(char* s)
 }
 
 /*
- * Wait and check, if no command to keep it on
+ * @brief Check turn off Bluecontroller
+ *
+ *  Wait and check, if no command to keep it on
  *
  * @return 1 wenn aktiv, 0 wenn nicht aktiv
  */
@@ -201,9 +198,9 @@ void bt_debug(char* s)
 }*/
 
 /**
- * Turn LED on or off
+ * @brief Turn LED on or off
  *
- *		Turns LED on (i==1) / off (i!=1).
+ *	Turns LED on (i==1) / off (i!=1).
  *
  * @param i If i==1 turn LED on, else off
  */

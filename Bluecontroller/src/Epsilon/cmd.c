@@ -2,7 +2,7 @@
  * @file	cmd.c
  * @author	Fabi Rosenthal, Florian Thaeter
  * @version	Epsilon
- * @date	25.03.2013
+ * @date	18.05.2013
  *
  * @section LICENSE
  *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
@@ -15,20 +15,21 @@
 #include "cmd.h"
 
 /* Global Variables */
-volatile char uart_string[UART_MAXSTRLEN + 1] = "";	//used to store incoming commands
-volatile uint8_t uart_str_complete = 0;     		//1 means complete received
+volatile char uart_string[UART_MAXSTRLEN + 1] = "";	// Used to store incoming commands
+volatile uint8_t uart_str_complete = 0;     		// 1 means complete received
 volatile uint8_t uart_str_count = 0;
 
 
 /**
- * Check commands
+ * @brief Check commands
  *
- *		This method checks if received command is a valid command and react to it.
- *		Furthermore it resets the commandBuffer.
+ *  This method checks if received command is a valid command and react to it.
+ *  Furthermore it resets the commandBuffer.
  */
 void checkCmd()
 {
-	while (uart_str_complete!=1);	//wait for complete command
+	/* Wait for complete command */
+	while (uart_str_complete!=1);
 	
 	char* uart_string_val = (char *) uart_string;
 	if(strcmp(uart_string_val, "wusel") == 0) {
@@ -43,60 +44,29 @@ void checkCmd()
 		bt_led_on(0);
 	}
 	else {
-		// send invalid command back
+		/* Send invalid command back */
 		bt_debug(uart_string_val);
 	}
 
-	uart_str_complete = 0;			// reset command
-	sei(); // TODO: test
+	/* Reset command */
+	uart_str_complete = 0;
+	sei(); // TODO: necessary?
 }
 
-/*
- * This method is used for debugging purpose. If a correct command is detected
- * (status 1) the Bluecontorller LED blinks slow for a while. If an incorrect
- * command is detected (status 2) the LED blinks fast. In all other cases
- * (status 0) the LED is turned off.
- */
-/*void statusLED(int status) {
-	DDRB |= (1<<DDB6);			// define PortB->LED as output ... TODO: put it somewhere else
-	switch (status)
-	{
-	case 1:
-		while(0) {					// TODO: not to long and not to short
-			PORTB = (0<<PB6);
-			_delay_ms(1000);
-			PORTB |= (1<<PB6);
-			_delay_ms(1000);
-		}			
-		break;
-	case 2:
-			while(0) {				// TODO: not to long and not to short
-			PORTB = (0<<PB6);
-			_delay_ms(500);
-			PORTB |= (1<<PB6);
-			_delay_ms(500);
-		}
-		break;
-	default:
-		PORTB = (0<<PB6);
-		break;
-	}
-}*/	
-
 /**
- * Interrupt USART_RX_vect
+ * @brief Interrupt USART_RX_vect
  *
- *		This interrupt is fired if new data is available in USART receive buffer.
+ *  This interrupt is fired if new data is available in USART receive buffer.
  *
- *		Source: http://www.mikrocontroller.net/articles/AVR-GCC-Tutorial/Der_UART
+ *  Source: http://www.mikrocontroller.net/articles/AVR-GCC-Tutorial/Der_UART
  */
 ISR( USART_RX_vect )
 {
 	unsigned char nextChar;
 	/* Read data from buffer */
 	nextChar = UDR;
-	//readCmd(nextChar);
-	if( uart_str_complete == 0 ) {	// only if uart_string is currently not in use
+	/* Only if uart_string is currently not in use */
+	if( uart_str_complete == 0 ) {
 		if( nextChar != '\n' &&
 		nextChar != '\r' &&
 		uart_str_count < UART_MAXSTRLEN ) {
@@ -107,7 +77,7 @@ ISR( USART_RX_vect )
 			uart_string[uart_str_count] = '\0';
 			uart_str_count = 0;
 			uart_str_complete = 1;
-			cli(); // TODO: TESTEN
+			cli(); // TODO: necessary?
 		}
 	}
 }
