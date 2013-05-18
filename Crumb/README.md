@@ -4,9 +4,7 @@ Testing UART with Crumb Modul
 
 ## Project
 
-Author: Fabi Rosenthal (code@xennis.de), Florian T.
-
-Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+Author: Fabi Rosenthal (code@xennis.de), Florian Thaeter
 
 Documentation: http://wiki.xennis.de/artikel/AVR-GCC_-_UART
 

@@ -3,8 +3,7 @@
  *
  * Created: 13.12.2012
  *  Program: Atmel Studio 6
- *  Author: Fabi Rosenthal, Florian T.
- *  Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+ *  Author: Fabi Rosenthal, Florian Thaeter
  *  Code: http://github.com/Xennis/Bluecontroller_BCA8_BTM
  *  Documentation: http://wiki.xennis.de/artikel/AVR-GCC_-_UART
  */
@@ -46,23 +45,4 @@ void uart_puts( char *s )
 		uart_putc(*s);
 		s++;
 	}
-}
-
-/*
- * Timer Initialization
- */
-void uart_timer_init( void ) {
-	DDRD |= (1<<DDD6) | (1<<DDD5);
-	// normale 8-bit PWM aktivieren (nicht invertiert),
-	// Das Bit WGM10 wird im Datenblatt auch als PWM10 bezeichnet
-	TCCR0A = (1<<COM0A0)|(1<<COM0A1)|(1<<COM0B0)|(1<<COM0B1)|(1<<WGM00);
-
-	// Einstellen der PWM-Frequenz auf 14 kHz (Prescaler = 1)
-	TCCR0B = (1<<CS00);
-	TCNT0 = 255;
-	OCR0A = 255;
-	OCR0B = 235;
-	// Interrupts für Timer1 deaktivieren
-	// Achtung: Auch die Interrupts für die anderen Timer stehen in diesem Register
-	// TIMSK &= ~0x3c;
 }
