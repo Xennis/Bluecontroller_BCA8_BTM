@@ -12,7 +12,7 @@ Exactly:
 
 Institute of Computer Engineering, University of Lübeck:
 
-* Author: Fabi Rosenthal (code@xennis.de), Florian Thaeter, Mai Linh E. N.
+* Author: Fabi Rosenthal (code@xennis.de), Florian Thaeter, Mai Linh E. Nguyen
 * Supervisor: Dipl.-Ing. Patrick Weiss, Dipl.-Inf. Alexander Gabrecht
 
 ### mReS - Modular Rehabilitation System
