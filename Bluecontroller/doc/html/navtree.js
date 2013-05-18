@@ -14,7 +14,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_epsilon_8c.html"
+"bluecontroller_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
