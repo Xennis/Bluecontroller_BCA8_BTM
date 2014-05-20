@@ -12,7 +12,7 @@ Exactly:
 
 Institute of Computer Engineering, University of Lübeck:
 
-* Author: Fabi Rosenthal (code@xennis.de), Florian Thaeter, Mai Linh E. Nguyen
+* Author: Fabi Rosenthal, Florian Thaeter, Mai Linh E. Nguyen
 * Supervisor: Dipl.-Ing. Patrick Weiss, Dipl.-Inf. Alexander Gabrecht
 
 ### mReS - Modular Rehabilitation System
@@ -27,7 +27,7 @@ mReS project: http://www.iti.uni-luebeck.de/en/research/mobile-robotics/mres.htm
 
 Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
 
-Documentation: http://wiki.xennis.de/artikel/Bluecontroller
+Documentation: http://xennis.org/wiki/Bluecontroller
 
 Acknowledgement: Thanks to the support of Michael Dreher and Kamil Loska
 

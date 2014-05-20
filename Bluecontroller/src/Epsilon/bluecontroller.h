@@ -10,7 +10,7 @@
  * @section DESCRIPTION
  *  Code: http://github.com/Xennis/Bluecontroller_BCA8_BTM
  *
- *  Documentation: http://wiki.xennis.de/artikel/Bluecontroller
+ *  Documentation: http://xennis.org/wiki/Bluecontroller
  */
 #ifndef BLUECONTROLLER_H_
 	#define BLUECONTROLLER_H_

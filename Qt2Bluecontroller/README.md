@@ -11,7 +11,7 @@ Note: see Bluecontroller *README.md* for more informations (commands,
 
 Institute of Computer Engineering, University of Lübeck:
 
-* Author: Fabi Rosenthal (code@xennis.de)
+* Author: Fabi Rosenthal
 * Supervisor: Dipl.-Ing. Patrick Weiss, Dipl.-Inf. Alexander Gabrecht
 
 ### mReS - Modular Rehabilitation System

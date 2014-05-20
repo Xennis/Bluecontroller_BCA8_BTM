@@ -5,7 +5,7 @@
  *  Program: Atmel Studio 6
  *  Author: Fabi Rosenthal, Florian Thaeter
  *  Code: http://github.com/Xennis/Bluecontroller_BCA8_BTM
- *  Documentation: http://wiki.xennis.de/artikel/AVR-GCC_-_UART
+ *  Documentation: http://xennis.org/wiki/AVR-GCC_-_UART
  */
 #include "uart.h"
  
