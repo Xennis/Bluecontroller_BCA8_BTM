@@ -27,7 +27,9 @@ mReS project: http://www.iti.uni-luebeck.de/en/research/mobile-robotics/mres.htm
 
 Licence: CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
 
-Documentation: http://xennis.org/wiki/Bluecontroller
+Documentation (article): http://xennis.org/wiki/Bluecontroller
+
+Documentation (Doxygen): http://xennis.github.io/Bluecontroller_BCA8_BTM/Bluecontroller/doc/html/
 
 Acknowledgement: Thanks to the support of Michael Dreher and Kamil Loska
 
