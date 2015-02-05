@@ -46,16 +46,9 @@ Acknowledgement: Thanks to the support of Michael Dreher and Kamil Loska
 
 ## Code
 
-Latest stable Version: Epsilon (tested and proven to work)
+Latest stable Version: v1.1 aka Epsilon (tested and proven to work)
 
-All Versions:
-* Epsilon: stable
-* Delta: deprecated
-* Gamma: deprecated
-* Beta: deprecated
-* Alpha: deprecated
-
-### Epsilon Version
+### Epsilon (v1.1) Version
 
 Properties:
 * Setup Bluecontroller *bluecontroller.c* -> `void bt_setut(void)`
