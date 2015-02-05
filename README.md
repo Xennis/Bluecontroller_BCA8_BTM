@@ -33,22 +33,22 @@ Documentation (Doxygen): http://xennis.github.io/Bluecontroller_BCA8_BTM/Bluecon
 
 Acknowledgement: Thanks to the support of Michael Dreher and Kamil Loska
 
-## Hardware
+### Hardware
 
 * BCA8-BTM (Bluecontroller)
 * ATmega328P (Microcontroller)
 * BTM-222 (Bluetooth Module)
 
-## Software
+### Software
 
 * Atmel Studio 6
 * RS232 Terminal
 
 ## Code
 
-Latest stable Version: v1.1 aka Epsilon (tested and proven to work)
+Latest stable version: v1.1 aka Epsilon (tested and proven to work)
 
-### Epsilon (v1.1) Version
+### Epsilon version (v1.1) 
 
 Properties:
 * Setup Bluecontroller *bluecontroller.c* -> `void bt_setut(void)`
